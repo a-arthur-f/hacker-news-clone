@@ -1,0 +1,42 @@
+.story {
+    display: block;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 3px 6px;
+    width: 800px;
+    padding: 15px;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+.story a {
+    color: rgba(0, 0, 0, .8);
+    text-decoration: none;
+}
+
+.story a:hover {
+    color: black;
+}
+
+.story-title {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: "...";
+}
+
+.story-info {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: .7em;
+    margin-top: 10px;
+}
+
+.time {
+    position: absolute;
+    left: 40%;
+}
+
+
+

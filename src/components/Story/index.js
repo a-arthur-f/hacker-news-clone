@@ -1,4 +1,5 @@
 import React from 'react';
+import './styles.css';
 
 const Link = ({url, title}) => (
     <a href={url} target="_blank" rel="noreferrer">
@@ -8,7 +9,7 @@ const Link = ({url, title}) => (
 
 const Story = ({story: {id, by, title, kids, time, url}}) => (
     <div className="story">
-        <div className="story-tile">
+        <div className="story-title">
             <Link url={url} title={title} />
         </div>
     
@@ -17,16 +18,16 @@ const Story = ({story: {id, by, title, kids, time, url}}) => (
                 by{' '}
                 <Link url={`https://news.ycombinator.com/user?id${id}`} title={by} />
             </span>
-            |<span>
+            <span className="time">
                 {new Date(time * 1000).toLocaleDateString('en-US', {
                     hour: 'numeric',
                     minute: 'numeric'
                 })}
-            </span>|
+            </span>
             <span>
                 <Link 
                     url={`https://news.ycombinator.com/item?id=${id}`}
-                    tile={`${kids && kids.length > 0 ? kids.length : 0} comments`}
+                    title={`${kids && kids.length > 0 ? kids.length : 0} comments`}
                 />
             </span>
         </div>

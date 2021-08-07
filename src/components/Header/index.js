@@ -4,7 +4,7 @@ import './styles.css';
 
 const Header = () => (
     <header>
-        <h1>Hacker News</h1>
+        <h1>Rakernius</h1>
         <div className="nav-links">
             <NavLink to="/top" activeClassName="active">
                 Top Stories

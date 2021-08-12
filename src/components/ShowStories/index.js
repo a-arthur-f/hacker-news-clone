@@ -3,8 +3,8 @@ import useDataFetcher from '../../hooks/dataFetcher';
 import Loader from '../Loader';
 import Story from '../Story';
 
-const ShowStories = ({ type }) => {
-    const { isLoading, stories } = useDataFetcher(type);
+const ShowStories = ({ type, page }) => {
+    const { isLoading, stories } = useDataFetcher(type, page);
 
     return (
         <React.Fragment>

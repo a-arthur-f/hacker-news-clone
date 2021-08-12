@@ -6,13 +6,13 @@ const Header = () => (
     <header>
         <h1>Rakernius</h1>
         <div className="nav-links">
-            <NavLink to="/top" activeClassName="active">
+            <NavLink to="/top/1" activeClassName="active">
                 Top Stories
             </NavLink>
-            <NavLink to="/new" activeClassName="active">
+            <NavLink to="/new/1" activeClassName="active">
                 News
             </NavLink>
-            <NavLink to="/best" activeClassName="active">
+            <NavLink to="/best/1" activeClassName="active">
                 Best Stories
             </NavLink>
         </div>

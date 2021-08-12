@@ -19,6 +19,8 @@ const Loader = ({show, children}) => {
             document.body.classList.remove('loader-open');
         }
 
+        window.scrollTo(0, 0);
+
     },[loader, show])
 
     return ReactDOM.createPortal(children, node);

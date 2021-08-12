@@ -10,11 +10,23 @@ const getStory = async (id) => {
     }
 }
 
-export const getStories = async (type) => {
+export const getStories = async (type, page) => {
     try {
         const {data: storyIds} = await axios(`${BASE_URL}/${type}stories.json`);
-        const stories = await Promise.all(storyIds.slice(0, 30).map(getStory));
+        const from = (page - 1) * 30;
+        const to = page * 30;
+        const stories = await Promise.all(storyIds.slice(from, to).map(getStory));
         return stories;
+    } catch(e) {
+        console.log(e);     
+    }
+}
+
+export const getStoriesCount = async (type) => {
+    try {
+        const { data: storyIds } = await axios(`${BASE_URL}/${type}stories.json`);
+        const count = storyIds.length;
+        return count;
     } catch(e) {
         console.log(e);
     }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getStoriesCount } from '../../utils/apis';
+import './styles.css';
 
 const Button = ({text, onClick}) => (
     <span onClick={onClick}>{text}</span>
@@ -27,8 +28,8 @@ const Pagination = ({ type }) => {
     if(totalPages < 6) {
         for(let i = 0; i < totalPages; i++) {
             pageButtons.push(
-                <Link 
-                    to={`/${window.location.pathname.split('/')[0]}/${currentPage + 1}`}>
+                <Link key={i}
+                    to={`/${type}/${currentPage + i}`}>
                         <Button 
                             text={currentPage}
                             onClick={pageOnClick} 
@@ -37,7 +38,7 @@ const Pagination = ({ type }) => {
         }
     } else {
         pageButtons.push(
-            <Link 
+            <Link key="<"
                 to={`/${type}/${currentPage > 1 ? currentPage - 1 : 1}`}
             >
                 <Button
@@ -48,7 +49,6 @@ const Pagination = ({ type }) => {
         )
 
         for(let i = 0; i < 6; i++) {
-            console.log(i)
             pageButtons.push(
                 <Link key={i}
                     to={`/${type}/${currentPage + i}`}
@@ -60,10 +60,8 @@ const Pagination = ({ type }) => {
                 </Link>)
         }
 
-        console.log(totalPages)
-
         pageButtons.push(
-            <Link 
+            <Link key=">"
                 to={`/${type}/${currentPage < totalPages ? currentPage + 1 : totalPages}`}
             >
                 <Button
@@ -75,7 +73,7 @@ const Pagination = ({ type }) => {
     }
 
     return (
-        <div>
+        <div className="pagination">
             {pageButtons}
         </div>
     )

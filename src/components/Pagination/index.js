@@ -12,10 +12,11 @@ const Pagination = ({ type }) => {
     const [totalPages, setTotalPages] = useState(0);
     const pageButtons = [];
 
-    useEffect(async () => {
-        const pages = await getStoriesCount(type);
-        setTotalPages(pages);
-    }, [type, totalPages]);
+    useEffect(() => {
+        getStoriesCount(type)
+        .then(pages => setTotalPages(Math.round(pages / 30)))
+
+    }, [type]);
 
     const pageOnClick = (nextPage) => {
         if(nextPage < 1) return;
@@ -24,30 +25,21 @@ const Pagination = ({ type }) => {
             setCurrentPage(nextPage);
         }   
     }
+    console.log(totalPages - currentPage)
 
-    if(totalPages < 6) {
-        for(let i = 0; i < totalPages; i++) {
+    if(totalPages - currentPage < 6) {
+        for(let i = currentPage; i <= totalPages; i++) {
+            console.log(currentPage)
             pageButtons.push(
                 <Link key={i}
-                    to={`/${type}/${currentPage + i}`}>
+                    to={`/${type}/${i}`}>
                         <Button 
-                            text={currentPage}
-                            onClick={pageOnClick} 
+                            text={i}
+                            onClick={() => pageOnClick(i)} 
                         />
                 </Link>)
         }
     } else {
-        pageButtons.push(
-            <Link key="<"
-                to={`/${type}/${currentPage > 1 ? currentPage - 1 : 1}`}
-            >
-                <Button
-                    text='<'
-                    onClick={() => {pageOnClick(currentPage - 1)}}
-                />
-            </Link>
-        )
-
         for(let i = 0; i < 6; i++) {
             pageButtons.push(
                 <Link key={i}
@@ -59,18 +51,29 @@ const Pagination = ({ type }) => {
                         />
                 </Link>)
         }
-
-        pageButtons.push(
-            <Link key=">"
-                to={`/${type}/${currentPage < totalPages ? currentPage + 1 : totalPages}`}
-            >
-                <Button
-                    text='>'
-                    onClick={() => {pageOnClick(currentPage + 1)}}
-                />
-            </Link>
-        )
     }
+
+    pageButtons.unshift(
+        <Link key="<"
+            to={`/${type}/${currentPage > 1 ? currentPage - 1 : 1}`}
+        >
+            <Button
+                text='<'
+                onClick={() => {pageOnClick(currentPage - 1)}}
+            />
+        </Link>
+    )
+
+    pageButtons.push(
+        <Link key=">"
+            to={`/${type}/${currentPage < totalPages ? currentPage + 1 : totalPages}`}
+        >
+            <Button
+                text='>'
+                onClick={() => {pageOnClick(currentPage + 1)}}
+            />
+        </Link>
+    )
 
     return (
         <div className="pagination">

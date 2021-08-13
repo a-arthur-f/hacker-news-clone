@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { getStoriesCount } from '../../utils/apis';
 import './styles.css';
 
-const Button = ({text, onClick}) => (
-    <span onClick={onClick}>{text}</span>
+const Button = ({text, onClick, className}) => (
+    <span className={className} onClick={onClick}>{text}</span>
 )
 
 const Pagination = ({ type }) => {
@@ -25,7 +25,6 @@ const Pagination = ({ type }) => {
             setCurrentPage(nextPage);
         }   
     }
-    console.log(totalPages - currentPage)
 
     if(totalPages - currentPage < 6) {
         for(let i = currentPage; i <= totalPages; i++) {
@@ -41,6 +40,7 @@ const Pagination = ({ type }) => {
         }
     } else {
         for(let i = 0; i < 6; i++) {
+            console.log(i + 1)
             pageButtons.push(
                 <Link key={i}
                     to={`/${type}/${currentPage + i}`}
@@ -48,6 +48,7 @@ const Pagination = ({ type }) => {
                         <Button 
                             text={currentPage + i}
                             onClick={() => {pageOnClick(currentPage + i)}}
+                            className={currentPage === i + currentPage ? 'page-active' : ''}
                         />
                 </Link>)
         }

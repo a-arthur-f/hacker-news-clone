@@ -6,7 +6,6 @@
 .pagination span {
     display: inline-block;
     margin: 15px 5px;
-    border: 1.5px solid rgba(0, 0, 0, .8);
     width: 25px;
     text-align: center;
     border-radius: 20%;

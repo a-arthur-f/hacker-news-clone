@@ -30,7 +30,7 @@ const AppRouter = () => {
                             return (
                                 <React.Fragment>
                                     <ShowStories type={type} page={page} />
-                                    <Pagination type={type}/>
+                                    <Pagination type={type} page={page}/>
                                 </React.Fragment>
                             )
                         }}

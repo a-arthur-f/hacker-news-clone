@@ -16,6 +16,15 @@ header h1 {
     letter-spacing: 5px;
 }
 
+header a {
+    text-decoration: none;
+    color: rgb(50, 50, 50);
+}
+
+header a:hover {
+    color: black;
+}
+
 .nav-links {
     display: flex;
     justify-content: center;
@@ -33,7 +42,7 @@ header h1 {
 }
 
 .nav-links a:hover {
-    color: rgba(50, 50, 50, 1);
+    color: black;
 }
 
 .nav-links .active {

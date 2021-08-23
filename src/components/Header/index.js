@@ -1,10 +1,10 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import './styles.css';
 
 const Header = () => (
     <header>
-        <h1>Rakernius</h1>
+        <Link to="/top/1"><h1>Rakernius</h1></Link>
         <div className="nav-links">
             <NavLink to="/top/1" activeClassName="active">
                 Top Stories
